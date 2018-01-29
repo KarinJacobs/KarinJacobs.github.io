@@ -22,6 +22,8 @@ function arenaSweep() {
         
             player.highscore = player.score            
         }
+
+        dropInterval = (player.score < 900) ? 1000 - player.score : 100;
     }    
 }
 
