@@ -241,7 +241,7 @@ const player = {
 }
 
 document.addEventListener('keydown', event => {
-    if(event.keyCode === 37) {
+     if(event.keyCode === 37) {
         playerMove(-1);
     } else if(event.keyCode === 39) {
         playerMove(+1);
@@ -263,7 +263,7 @@ var yDown = null;
 function handleTouchStart(evt) {                                         
     xDown = evt.touches[0].clientX;                                      
     yDown = evt.touches[0].clientY;                                      
-};                                                
+};
 
 function handleTouchMove(evt) {
     if ( ! xDown || ! yDown ) {
@@ -275,6 +275,10 @@ function handleTouchMove(evt) {
 
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
+
+    if (xDiff == 0 && yDiff == 0) {
+        playerDrop()
+    }
 
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
