@@ -254,6 +254,15 @@ document.addEventListener('keydown', event => {
     }
 })
 
+document.addEventListener('click', handleClick, true);
+var click = null;
+function handleClick(evt) {
+    click = 1
+    if (click =1) {
+        playerDrop();
+    }
+}
+
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
 
@@ -275,10 +284,6 @@ function handleTouchMove(evt) {
 
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
-
-    if (xDiff == 0 && yDiff == 0) {
-        playerDrop()
-    }
 
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
