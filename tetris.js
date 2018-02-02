@@ -127,10 +127,10 @@ function merge(arena, player) {
     });
 }
 
-function playerDrop() {
-    player.pos.y++;
+function playerDrop(count) {
+    player.pos.y += count;
     if (collide(arena, player)) {
-        player.pos.y--;
+        player.pos.y -= count;
         merge(arena, player);
         playerReset();
         arenaSweep();
@@ -206,7 +206,7 @@ function update(time = 0) {
 
     dropCounter += deltaTime;
     if (dropCounter > dropInterval) {
-        playerDrop();
+        playerDrop(1);
     }
     draw();
     requestAnimationFrame(update);
@@ -246,7 +246,7 @@ document.addEventListener('keydown', event => {
     } else if(event.keyCode === 39) {
         playerMove(+1);
     } else if(event.keyCode === 40) {
-        playerDrop();
+        playerDrop(1);
     } else if(event.keyCode === 81) {
         playerRotate(-1);
     } else if(event.keyCode === 87) {
@@ -254,14 +254,29 @@ document.addEventListener('keydown', event => {
     }
 })
 
-document.addEventListener('click', handleClick, true);
-var click = null;
-function handleClick(evt) {
-    click = 1
-    if (click =1) {
-        playerDrop();
-    }
+function singleClick() {
+    playerDrop(1);
 }
+
+function doubleClick(){
+    playerDrop(10);
+}
+
+var clickCount =0;
+
+document.addEventListener('click', function() {
+    clickCount++;
+    if (clickCount == 1) {
+        singleClickTimer = setTimeout(function() {
+            clickCount = 0;
+            singleClick();
+        }, 400);
+    } else if (clickCount == 2) {
+        clearTimeout(singleClickTimer);
+        clickCount = 0;
+        doubleClick();
+    }
+}, false);
 
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
