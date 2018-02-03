@@ -1,33 +1,53 @@
 <html>
-    <head>
-        <title>Tetris</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <link rel="manifest" href="manifest.webmanifest">
-        <style>
-            body {
-                background: #202028;
-                color: #fff;
-                font-family: sans-serif;
-                font-size: 2em;
-                text-align: center;
-            }
-            canvas {
-                border: solid .2em #fff;
-                height: 75vh;
-            }
-            h2 {
-                font-family: sans-serif;
-                font-size: 1em;
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <h2>Score
-        <div id="score"></div></h2>
-        <h2>Highscore
-        <div id="highscore"></div></h2>
-        <canvas id="tetris" width="240" height="400"></canvas>
-        <script src="tetris.js"></script>
-    </body>
+
+<head>
+    <title>Tetris</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="manifest.webmanifest">
+    <style>
+        body {
+            background: #202028;
+            color: #fff;
+            font-family: sans-serif;
+            font-size: 2em;
+            text-align: center;
+        }
+        canvas {
+            border: solid .2em #fff;
+            height: 75vh;
+        }
+        h4 {
+            font-family: sans-serif;
+            font-size: 1em;
+            text-align: center;
+        }
+        .scoreTable {
+            width: 100%;
+            max-width: 75vw;
+            margin: 0 auto 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="scoreTable">
+        <tbody>
+            <tr>
+                <td>
+                    <h4>Score
+                        <span id="score"></span>
+                    </h4>
+                </td>
+                <td>
+                    <h4>Highscore
+                        <span id="highscore"></span>
+                    </h4>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <canvas id="tetris" width="240" height="400"></canvas>
+    <script src="tetris.js"></script>
+</body>
+
 </html>
