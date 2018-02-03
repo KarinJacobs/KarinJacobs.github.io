@@ -175,6 +175,7 @@ function playerReset() {
         player.score = 0;
         updateScore();
         updateHighscore();
+        dropInterval = 1000;
     }
 }
 
